@@ -1,0 +1,33 @@
+<h3><a class="btn btn-secondary" href="/user"><i class="fa fa-plus"></i> Agregar Nuevo Usuario</a> Lista de Usuarios</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Status</th>
+      <th>Deportes Favoritos</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.nombre}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.fecha_nacimiento}}</td>
+      <td>{{this.status}}</td>
+      <td>{{#each this.deportes_favoritos}}
+        {{this}},
+        {{/each}}
+      </td>
+      <td>
+        <a href="/user/{{this._id}}" tooltip="editar"><i class="far fa-edit" tooltip="Editar"></i></a>
+        <a href="/user/delete/{{this._id}}" onclick="return confirm('quieres borrar este usuario ?');"><i class="fa fa-trash fa-lg"
+            aria-hidden="true"></i></a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
